@@ -31,6 +31,7 @@ class Game:
         self.bullet_manager = BulletManager()
         self.power_up_manager = PowerUpManager()
         self.menu = Menu('Press any button to start....', self.screen)
+        self.lives = 0# Añadir atributo para almacenar las vidas del jugador
         
     def execute(self):
         self.running = True
@@ -53,6 +54,7 @@ class Game:
             self.events()
             self.update()
             self.draw()
+            self.lives = self.player.lives  # Actualizar el contador de vidas del jugador
        # pygame.display.quit()
         #pygame.quit()
 
@@ -130,12 +132,18 @@ class Game:
         text_rect.center = (1000, 50)
         self.screen.blit(text, text_rect)
 
+        lives_text = font.render(f'HEART: {self.player.lives}', True, (255, 255, 255))
+        lives_rect = lives_text.get_rect()
+        lives_rect.topleft = (20, 20)
+        self.screen.blit(lives_text, lives_rect)
+
     def reset(self):
         self.score = 0
         self.enemy_manager.reset()
         self.bullet_manager.reset()
         self.player.reset()
         self.power_up_manager.reset()
+        self.lives = self.player.lives
 
     def draw_power_up_time(self):
         if self.player.has_power_up:

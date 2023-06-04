@@ -1,1 +1,0 @@
-from game.components.power_ups.rayo import Rayo

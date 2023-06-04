@@ -1,5 +1,5 @@
 import pygame
-from game.components.enemies.enemy import Enemy
+
 from game.utils.constants import SHIELD_TYPE
 
 

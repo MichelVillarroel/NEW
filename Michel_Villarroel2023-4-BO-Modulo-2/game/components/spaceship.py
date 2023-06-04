@@ -23,6 +23,7 @@ class Spaceship(Sprite):
         self.power_up_type = DEFAULT_TYPE
         self.has_power_up = False
         self.power_time_up = 0
+        self.lives = 0  # Añadir atributo para almacenar las vidas del jugador
 
     def update(self, user_input, game):
       if user_input[pygame.K_LEFT]:
@@ -77,3 +78,9 @@ class Spaceship(Sprite):
     def set_image(self, size = (SHIP_WIDTH, SHIP_HEIGHT), image = SPACESHIP):
         self.image = image
         self.image = pygame.transform.scale(self.image, size)
+
+    def add_lives(self, num_lives):
+        self.lives += num_lives
+
+    def get_lives(self):
+        return self.lives
